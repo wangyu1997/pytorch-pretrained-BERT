@@ -1,4 +1,4 @@
-from .tokenization import BertTokenizer, BasicTokenizer, WordpieceTokenizer
+from .tokenization import BertTokenizer
 from .modeling import (BertConfig, BertModel, BertForPreTraining,
                        BertForMaskedLM, BertForNextSentencePrediction,
                        BertForSequenceClassification, BertForTokenClassification,

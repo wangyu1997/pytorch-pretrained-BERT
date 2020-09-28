@@ -19,8 +19,8 @@ from __future__ import print_function
 import os
 import unittest
 
-from pytorch_pretrained_bert.tokenization import (BertTokenizer, BasicTokenizer, WordpieceTokenizer,
-                                                  _is_whitespace, _is_control, _is_punctuation)
+from pytorch_pretrained_bert.tokenization_raw import (BertTokenizer, BasicTokenizer, WordpieceTokenizer,
+                                                      _is_whitespace, _is_control, _is_punctuation)
 
 
 class TokenizationTest(unittest.TestCase):
@@ -46,10 +46,10 @@ class TokenizationTest(unittest.TestCase):
 
     def test_chinese(self):
         tokenizer = BasicTokenizer()
-    
+
         self.assertListEqual(
             tokenizer.tokenize(u"ah\u535A\u63A8zz"),
-            [u"ah", u"\u535A", u"\u63A8", u"zz"])  
+            [u"ah", u"\u535A", u"\u63A8", u"zz"])
 
     def test_basic_tokenizer_lower(self):
         tokenizer = BasicTokenizer(do_lower_case=True)

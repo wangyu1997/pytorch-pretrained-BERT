@@ -36,6 +36,7 @@ logging.basicConfig(format = '%(asctime)s - %(levelname)s - %(name)s -   %(messa
                     level = logging.INFO)
 logger = logging.getLogger(__name__)
 
+SPLIT_TOKEN='split_分'
 
 class InputExample(object):
 
@@ -176,12 +177,13 @@ def read_examples(input_file):
             line = line.strip()
             text_a = None
             text_b = None
-            m = re.match(r"^(.*) \|\|\| (.*)$", line)
-            if m is None:
+            line.find('split_分')
+            if not SPLIT_TOKEN in line:
                 text_a = line
             else:
-                text_a = m.group(1)
-                text_b = m.group(2)
+                txts = line.split(SPLIT_TOKEN)
+                text_a = txts[0].strip().strip('\n')
+                text_b = txts[1].strip().strip('\n')
             examples.append(
                 InputExample(unique_id=unique_id, text_a=text_a, text_b=text_b))
             unique_id += 1
@@ -292,7 +294,6 @@ def main():
                     all_out_features.append(out_features)
                 output_json["features"] = all_out_features
                 writer.write(json.dumps(output_json) + "\n")
-
 
 if __name__ == "__main__":
     main()

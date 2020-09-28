@@ -812,7 +812,8 @@ class BertForNextSentencePrediction(PreTrainedBertModel):
 
 
 class BertForSequenceClassification(PreTrainedBertModel):
-    """BERT model for classification.
+    """
+    BERT model for classification.
     This module is composed of the BERT model with a linear layer on top of
     the pooled output.
 
@@ -878,7 +879,8 @@ class BertForSequenceClassification(PreTrainedBertModel):
 
 
 class BertForTokenClassification(PreTrainedBertModel):
-    """BERT model for token-level classification.
+    """
+    BERT model for token-level classification.
     This module is composed of the BERT model with a linear layer on top of
     the full hidden state of the last layer.
 
